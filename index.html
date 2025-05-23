@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shilpakala Kendra - Social Media QR Codes</title>
+    <style>
+        :root {
+            --instagram-color: #E1306C;
+            --facebook-color: #1877F2;
+            --club-primary: #8B4513;
+            --club-secondary: #FF6B35;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(135deg, var(--club-primary) 0%, var(--club-secondary) 100%);
+            color: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateX(-50px) translateY(-50px); }
+            100% { transform: translateX(50px) translateY(50px); }
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .club-description {
+            font-size: 1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .qr-codes-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .qr-card {
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 320px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .qr-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-header svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .instagram-header {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .facebook-header {
+            background: linear-gradient(45deg, var(--facebook-color), #4267B2);
+        }
+
+        .qr-container {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(45deg, #f8f9fa, #ffffff);
+        }
+
+        .qr-code {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .qr-code img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+
+        .logo-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: white;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            border: 3px solid #f8f9fa;
+        }
+
+        .logo-overlay svg {
+            width: 35px;
+            height: 35px;
+        }
+
+        .card-footer {
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+            background: linear-gradient(45deg, #f8f9fa, #ffffff);
+        }
+
+        .scan-text {
+            font-size: 1rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .art-emoji {
+            display: inline-block;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            .qr-codes-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .qr-card {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            header {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .qr-card {
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>🎨 Shilpakala Kendra 🎨</h1>
+    <p class="subtitle">Connect with our art community</p>
+
+</header>
+
+<div class="container">
+    <div class="qr-codes-container">
+        <!-- Instagram QR Code -->
+        <div class="qr-card">
+            <div class="card-header instagram-header">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                          fill="#FFFFFF"/>
+                </svg>
+                <span>Instagram</span>
+            </div>
+            <div class="qr-container">
+                <div class="qr-code" id="instagram-qr"></div>
+                <div class="logo-overlay">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#405DE6"/>
+                            <stop offset="20%" style="stop-color:#5851DB"/>
+                            <stop offset="40%" style="stop-color:#833AB4"/>
+                            <stop offset="60%" style="stop-color:#C13584"/>
+                            <stop offset="80%" style="stop-color:#E1306C"/>
+                            <stop offset="100%" style="stop-color:#FD1D1D"/>
+                        </linearGradient>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                              fill="url(#instagram-gradient)"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p class="scan-text">📷 Follow us on Instagram</p>
+            </div>
+        </div>
+
+        <!-- Facebook QR Code -->
+        <div class="qr-card">
+            <div class="card-header facebook-header">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#FFFFFF"/>
+                </svg>
+                <span>Facebook</span>
+            </div>
+            <div class="qr-container">
+                <div class="qr-code" id="facebook-qr"></div>
+                <div class="logo-overlay">
+                    <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M36 18C36 8.059 27.941 0 18 0C8.059 0 0 8.059 0 18C0 26.99 6.584 34.479 15.188 35.819V23.344H10.875V18H15.188V14.348C15.188 9.918 17.775 7.312 21.798 7.312C23.745 7.312 25.781 7.688 25.781 7.688V11.813H23.512C21.291 11.813 20.625 13.303 20.625 14.813V18H25.594L24.812 23.344H20.625V35.819C29.229 34.479 36 26.99 36 18Z" fill="#1877F2"/>
+                        <path d="M24.812 23.344L25.594 18H20.625V14.813C20.625 13.303 21.291 11.813 23.512 11.813H25.781V7.687C25.781 7.687 23.745 7.312 21.798 7.312C17.775 7.312 15.188 9.918 15.188 14.348V18H10.875V23.344H15.188V35.818C16.104 35.944 17.044 36 18 36C18.956 36 19.896 35.943 20.812 35.818V23.344H24.812Z" fill="white"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p class="scan-text">👥 Join our Facebook community</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Function to center QR codes and logos
+        function centerQRCodeAndOverlay() {
+            const qrDivs = document.querySelectorAll('.qr-code');
+            qrDivs.forEach(div => {
+                if (div.firstChild && div.firstChild.tagName === 'IMG') {
+                    div.style.display = 'flex';
+                    div.style.justifyContent = 'center';
+                    div.style.alignItems = 'center';
+                }
+            });
+        }
+
+        // Create Instagram QR code
+        new QRCode(document.getElementById("instagram-qr"), {
+            text: "https://www.instagram.com/shilpakala_kendra/",
+            width: 220,
+            height: 220,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Create Facebook QR code
+        new QRCode(document.getElementById("facebook-qr"), {
+            text: "https://www.facebook.com/fb.shilpakalakendra",
+            width: 220,
+            height: 220,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+
+        // Add a small delay to ensure QR codes are rendered before centering
+        setTimeout(centerQRCodeAndOverlay, 100);
+
+        // Also apply centering if window is resized
+        window.addEventListener('resize', centerQRCodeAndOverlay);
+    });
+</script>
+</body>
+</html>
