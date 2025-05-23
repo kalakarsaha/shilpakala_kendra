@@ -190,6 +190,85 @@
             font-size: 1rem;
             color: #555;
             font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .social-button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .social-button:hover::before {
+            left: 100%;
+        }
+
+        .instagram-button {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        }
+
+        .instagram-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(225, 48, 108, 0.4);
+        }
+
+        .facebook-button {
+            background: linear-gradient(45deg, var(--facebook-color), #4267B2);
+        }
+
+        .facebook-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(24, 119, 242, 0.4);
+        }
+
+        .button-icon {
+            display: inline-block;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .or-divider {
+            margin: 1rem 0 0.5rem 0;
+            font-size: 0.8rem;
+            color: #888;
+            position: relative;
+        }
+
+        .or-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #ddd;
+            z-index: 1;
+        }
+
+        .or-divider span {
+            background: white;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
         }
 
         .art-emoji {
@@ -228,6 +307,11 @@
             header {
                 padding: 2rem 1rem;
             }
+
+            .social-button {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -245,7 +329,6 @@
 <header>
     <h1>🎨 Shilpakala Kendra 🎨</h1>
     <p class="subtitle">Connect with our art community</p>
-
 </header>
 
 <div class="container">
@@ -277,7 +360,12 @@
                 </div>
             </div>
             <div class="card-footer">
-                <p class="scan-text">📷 Follow us on Instagram</p>
+                <p class="scan-text">📷 Scan QR code to follow us</p>
+                <div class="or-divider"><span>OR</span></div>
+                <a href="https://www.instagram.com/shilpakala_kendra/" target="_blank" class="social-button instagram-button">
+                    <span class="button-icon">📱</span>
+                    Follow on Instagram
+                </a>
             </div>
         </div>
 
@@ -299,7 +387,12 @@
                 </div>
             </div>
             <div class="card-footer">
-                <p class="scan-text">👥 Join our Facebook community</p>
+                <p class="scan-text">👥 Scan QR code to join us</p>
+                <div class="or-divider"><span>OR</span></div>
+                <a href="https://www.facebook.com/fb.shilpakalakendra" target="_blank" class="social-button facebook-button">
+                    <span class="button-icon">📱</span>
+                    Join on Facebook
+                </a>
             </div>
         </div>
     </div>
